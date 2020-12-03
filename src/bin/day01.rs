@@ -1,5 +1,3 @@
-// Task: Find the two entries that sum up to 2020 and return their product.
-// Second task: Find three numbers with the same condition.
 mod helpers;
 
 fn main() {
