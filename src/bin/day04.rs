@@ -11,7 +11,7 @@ fn main() {
     task_2(&input);
 }
 
-fn task_1(input: &Vec<String>) -> u32 {
+fn task_1(input: &[String]) -> u32 {
     let result = parse_passports(input);
 
     // Check that all the fields are present (except cid)
@@ -19,10 +19,10 @@ fn task_1(input: &Vec<String>) -> u32 {
 
     println!("Task 1: {}", valid_passport_count);
 
-    return valid_passport_count;
+    valid_passport_count
 }
 
-fn task_2(input: &Vec<String>) -> u32 {
+fn task_2(input: &[String]) -> u32 {
     let result = parse_passports(input);
 
     // Check that all the fields are valid
@@ -30,10 +30,10 @@ fn task_2(input: &Vec<String>) -> u32 {
 
     println!("Task 2: {}", valid_passport_count);
 
-    return valid_passport_count;
+    valid_passport_count
 }
 
-fn parse_passports(input: &Vec<String>) -> Vec<Passport> {
+fn parse_passports(input: &[String]) -> Vec<Passport> {
     let mut passports = Vec::new();
     let re = Regex::new(r"(\w+):(\S+)").unwrap();
 
@@ -61,7 +61,7 @@ fn parse_passports(input: &Vec<String>) -> Vec<Passport> {
     }
     passports.push(current_passport);
 
-    return passports;
+    passports
 }
 
 struct Passport {

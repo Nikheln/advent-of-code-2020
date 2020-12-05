@@ -7,6 +7,6 @@ pub fn read_input(input_name: &str) -> Result<Vec<String>, std::io::Error> {
     input_path.push_str(input_name);
 
     let reader = BufReader::new(File::open(input_path)?);
-    return reader.lines().collect();
+    reader.lines().collect()
 }
 

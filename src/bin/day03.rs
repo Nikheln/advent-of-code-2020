@@ -11,19 +11,19 @@ fn main() {
     println!("Task 2: {}", result);
 }
 
-fn task_1(input: &Vec<String>) -> u32 {
-    return count_encountered_trees(input, 3, 1);
+fn task_1(input: &[String]) -> u32 {
+    count_encountered_trees(input, 3, 1)
 }
 
-fn task_2(input: &Vec<String>) -> u32 {
-    return count_encountered_trees(input, 1, 1)
+fn task_2(input: &[String]) -> u32 {
+    count_encountered_trees(input, 1, 1)
         * count_encountered_trees(input, 3, 1)
         * count_encountered_trees(input, 5, 1)
         * count_encountered_trees(input, 7, 1)
-        * count_encountered_trees(input, 1, 2);
+        * count_encountered_trees(input, 1, 2)
 }
 
-fn count_encountered_trees(input: &Vec<String>, r_step: usize, d_step: usize) -> u32 {
+fn count_encountered_trees(input: &[String], r_step: usize, d_step: usize) -> u32 {
     let mut encountered_tree_count = 0;
     let mut x_idx: usize = 0;
     let mut y_idx: usize = 0;
@@ -36,7 +36,7 @@ fn count_encountered_trees(input: &Vec<String>, r_step: usize, d_step: usize) ->
         y_idx += d_step;
     }
 
-    return encountered_tree_count;
+    encountered_tree_count
 }
 
 #[cfg(test)]

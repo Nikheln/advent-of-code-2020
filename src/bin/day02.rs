@@ -32,7 +32,7 @@ fn count_valid_passwords_task_1(input: &str) -> u32 {
         }
     }
 
-    return valid_password_count;
+    valid_password_count
 }
 
 fn count_valid_passwords_task_2(input: &str) -> u32 {
@@ -52,7 +52,7 @@ fn count_valid_passwords_task_2(input: &str) -> u32 {
         }
     }
 
-    return valid_password_count;
+    valid_password_count
 }
 
 #[cfg(test)]
