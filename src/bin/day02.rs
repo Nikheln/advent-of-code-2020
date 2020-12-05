@@ -10,6 +10,10 @@ fn main() {
     let result = count_valid_passwords_task_1(&input);
 
     println!("Task 1: {}", result);
+
+    let result2 = count_valid_passwords_task_2(&input);
+
+    println!("Task 2: {}", result2);
 }
 
 fn count_valid_passwords_task_1(input: &str) -> u32 {

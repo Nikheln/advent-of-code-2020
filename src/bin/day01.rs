@@ -51,12 +51,10 @@ fn find_multiple_of_triplet_with_sum(input: &Vec<u32>, wanted_sum: u32) -> Optio
 
 #[cfg(test)]
 mod tests {
-    use crate::find_multiple_of_pair_with_sum;
-    use crate::find_multiple_of_triplet_with_sum;
 
     #[test]
     fn verify_example_task_1() {
-        let result = find_multiple_of_pair_with_sum(&vec![1721, 979, 366, 299, 675, 1456], 2020);
+        let result = crate::find_multiple_of_pair_with_sum(&vec![1721, 979, 366, 299, 675, 1456], 2020);
         match result {
             Some(product) => assert_eq!(514579, product),
             None => panic!(),
@@ -65,7 +63,7 @@ mod tests {
 
     #[test]
     fn verify_example_task_2() {
-        let result = find_multiple_of_triplet_with_sum(&vec![1721, 979, 366, 299, 675, 1456], 2020);
+        let result = crate::find_multiple_of_triplet_with_sum(&vec![1721, 979, 366, 299, 675, 1456], 2020);
         match result {
             Some(product) => assert_eq!(241861950, product),
             None => panic!(),
