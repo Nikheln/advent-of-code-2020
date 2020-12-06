@@ -43,7 +43,7 @@ fn count_encountered_trees(input: &[String], r_step: usize, d_step: usize) -> u3
 mod tests {
 
     fn get_example_case() -> Vec<String> {
-        return vec![
+        vec![
             "..##.......".to_string(),
             "#...#...#..".to_string(),
             ".#....#..#.".to_string(),
@@ -55,7 +55,7 @@ mod tests {
             "#.##...#...".to_string(),
             "#...##....#".to_string(),
             ".#..#...#.#".to_string(),
-        ];
+        ]
     }
 
     #[test]
