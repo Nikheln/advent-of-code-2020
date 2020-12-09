@@ -51,6 +51,14 @@ fn task_2(input: &[String]) {
     println!("Task 2: {}", task_2_internal(input, 25));
 }
 
+/*
+ * Solve the task by maintaining the sum of consecutive numbers, extending the range from
+ * the front if the result is smaller than the target, and subtracting it from the back if
+ * the result is larger than the target. At some point the range will hit the target value
+ * or the function will panic if one is not found.
+ *
+ * Note: This only works because the input has no negative numbers.
+ */
 fn task_2_internal(input: &[String], preamble_size: usize) -> i64 {
     let rows: Vec<i64> = input.iter().map(|r| r.parse::<i64>().unwrap()).collect();
     let invalid_number = task_1_internal(input, preamble_size);
