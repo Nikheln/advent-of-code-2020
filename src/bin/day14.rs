@@ -78,28 +78,24 @@ fn get_indices(index: u64, mask: &Bitmask) -> Vec<u64> {
     // On every step, add two versions of all existing strings (one suffixed with 0, one
     // with 1) and prepend the strings until the index
     for i in 0..floating_indices.len() {
-        let this_floater: usize = floating_indices[i]+1;
+        let this_floater: usize = floating_indices[i] + 1;
         let next_floater: usize = match i {
-            val if val < floating_indices.len() - 1 => floating_indices[val+1],
-            _              => input_str.len(),
+            val if val < floating_indices.len() - 1 => floating_indices[val + 1],
+            _ => input_str.len(),
         };
         let substr = &input_str[this_floater..next_floater];
 
         let mut new_entries: Vec<String> = Vec::new();
-        new_entries.extend(
-            work.iter()
-                .map(|x| [x, "0", substr].concat()),
-        );
-        new_entries.extend(
-            work.iter()
-                .map(|x| [x, "1", substr].concat()),
-        );
+        new_entries.extend(work.iter().map(|x| [x, "0", substr].concat()));
+        new_entries.extend(work.iter().map(|x| [x, "1", substr].concat()));
 
         work.clear();
         work.append(&mut new_entries);
     }
 
-    work.iter().map(|x| u64::from_str_radix(x, 2).unwrap()).collect()
+    work.iter()
+        .map(|x| u64::from_str_radix(x, 2).unwrap())
+        .collect()
 }
 
 fn to_bitstring(input: u64) -> String {
@@ -109,7 +105,7 @@ fn to_bitstring(input: u64) -> String {
 struct Bitmask {
     zeroes: u64,
     ones: u64,
-    floating_indices: Vec<usize>
+    floating_indices: Vec<usize>,
 }
 
 impl Bitmask {
@@ -125,7 +121,11 @@ impl FromStr for Bitmask {
         Ok(Bitmask {
             zeroes: u64::from_str_radix(&s.replace("X", "1"), 2).unwrap(),
             ones: u64::from_str_radix(&s.replace("X", "0"), 2).unwrap(),
-            floating_indices: s.char_indices().filter(|c| c.1 == 'X').map(|c| c.0).collect()
+            floating_indices: s
+                .char_indices()
+                .filter(|c| c.1 == 'X')
+                .map(|c| c.0)
+                .collect(),
         })
     }
 }
@@ -157,7 +157,23 @@ mod tests {
 
     #[test]
     fn verify_get_indices() {
-        assert_eq!(vec![1, 1+(2 as u64).pow(34)], crate::get_indices(1, &"0X0000000000000000000000000000000000".parse::<crate::Bitmask>().unwrap()));
-        assert_eq!(vec![1, 1+(2 as u64).pow(35)], crate::get_indices(1, &"X00000000000000000000000000000000000".parse::<crate::Bitmask>().unwrap()));
+        assert_eq!(
+            vec![1, 1 + (2 as u64).pow(34)],
+            crate::get_indices(
+                1,
+                &"0X0000000000000000000000000000000000"
+                    .parse::<crate::Bitmask>()
+                    .unwrap()
+            )
+        );
+        assert_eq!(
+            vec![1, 1 + (2 as u64).pow(35)],
+            crate::get_indices(
+                1,
+                &"X00000000000000000000000000000000000"
+                    .parse::<crate::Bitmask>()
+                    .unwrap()
+            )
+        );
     }
 }
