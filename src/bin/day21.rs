@@ -131,7 +131,7 @@ mod tests {
     }
 
     #[test]
-    fn verify_day20_example_task_2() {
+    fn verify_day21_example_task_2() {
         let input = vec![
             "mxmxvkd kfcds sqjhc nhms (contains dairy, fish)".to_string(),
             "trh fvjkl sbzzf mxmxvkd (contains dairy)".to_string(),
